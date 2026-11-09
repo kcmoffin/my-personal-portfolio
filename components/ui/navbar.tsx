@@ -1,51 +1,37 @@
-"use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { buttonVariants } from "@/components/ui/button";
-import { Code2 } from "lucide-react";
 
-const navItems = [
+const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Education", href: "/education" },
   { name: "Hobbies", href: "/hobbies" },
+  { name: "Education", href: "/education" },
   { name: "Contact", href: "/contact" },
 ];
 
-export function Navbar() {
-  const pathname = usePathname();
-
+export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4 mx-auto">
+    <nav className="sticky top-0 z-50 border-b border-pink-100 bg-white/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link
           href="/"
-          className="flex items-center gap-2 font-bold text-xl"
+          className="text-2xl font-bold text-pink-600"
         >
-          <Code2 className="h-6 w-6 text-primary" />
-          <span>Carranza Portfolio</span>
+          Khiana<span className="text-purple-500">.</span>
         </Link>
 
-        <nav className="flex items-center gap-1 sm:gap-2">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={buttonVariants({
-                  variant: isActive ? "default" : "ghost",
-                  size: "sm",
-                })}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="flex flex-wrap items-center gap-5">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-gray-700 transition hover:text-pink-600"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
       </div>
-    </header>
+    </nav>
   );
 }
