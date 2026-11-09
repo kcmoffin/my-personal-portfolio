@@ -24,7 +24,7 @@ export function Navbar() {
           className="flex items-center gap-2 font-bold text-xl"
         >
           <Code2 className="h-6 w-6 text-primary" />
-          <span>DevPortfolio</span>
+          <span>Carranza Portfolio</span>
         </Link>
 
         <nav className="flex items-center gap-1 sm:gap-2">
